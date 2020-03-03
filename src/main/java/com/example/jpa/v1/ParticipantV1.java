@@ -1,4 +1,4 @@
-package com.example.jpa;
+package com.example.jpa.v1;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Participant {
+public class ParticipantV1 {
     @Id private Long id;
     private String name;
 }

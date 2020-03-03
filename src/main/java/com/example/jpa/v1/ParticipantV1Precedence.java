@@ -1,4 +1,4 @@
-package com.example.jpa;
+package com.example.jpa.v1;
 
 import lombok.Data;
 
@@ -8,8 +8,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Data
-public class ParticipantPrecedence {
+public class ParticipantV1Precedence {
     @Id private Long id;
-    @OneToOne private Participant source;
-    @OneToOne private Participant destination;
+    @OneToOne private ParticipantV1 source;
+    @OneToOne private ParticipantV1 destination;
 }
