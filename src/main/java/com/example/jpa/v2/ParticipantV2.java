@@ -1,6 +1,9 @@
 package com.example.jpa.v2;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,7 +15,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-//@Data
 @ToString(exclude = {"parent"})
 @NoArgsConstructor
 public class ParticipantV2 {

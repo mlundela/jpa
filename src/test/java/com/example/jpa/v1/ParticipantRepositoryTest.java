@@ -8,17 +8,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 class ParticipantRepositoryTest {
 
     @Autowired private ParticipantV1Repository participantRepository;
-    @Autowired private ParticipantPrecedenceV1Repository precedenceRepository;
+    @Autowired private PrecedenceV1Repository precedenceRepository;
 
     @Test
     public void test() throws Exception {
         final ParticipantV1 p1 = participantRepository.save(getParticipant("Henning", 1L));
         final ParticipantV1 p2 = participantRepository.save(getParticipant("Mads", 2L));
-        final ParticipantV1Precedence pp = precedenceRepository.save(createPrecedence(p1, p2));
+        final PrecedenceV1 pp = precedenceRepository.save(createPrecedence(p1, p2));
     }
 
-    private ParticipantV1Precedence createPrecedence(ParticipantV1 p1, ParticipantV1 p2) {
-        final ParticipantV1Precedence out = new ParticipantV1Precedence();
+    private PrecedenceV1 createPrecedence(ParticipantV1 p1, ParticipantV1 p2) {
+        final PrecedenceV1 out = new PrecedenceV1();
         out.setId(1L);
         out.setSource(p1);
         out.setDestination(p2);
