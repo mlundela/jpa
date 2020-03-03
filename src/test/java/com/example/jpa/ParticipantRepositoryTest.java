@@ -12,7 +12,14 @@ class ParticipantRepositoryTest {
 
     @Test
     public void test() throws Exception {
-        //
+        participantRepository.save(getParticipant());
+    }
+
+    private Participant getParticipant() {
+        final Participant out = new Participant();
+        out.setId(1L);
+        out.setName("Mads");
+        return out;
     }
 
 }
