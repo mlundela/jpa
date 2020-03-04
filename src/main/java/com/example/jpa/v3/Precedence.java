@@ -30,7 +30,7 @@ public class Precedence implements Serializable {
 
     @Override
     public String toString() {
-        return "PrecedenceV3{" +
+        return "Precedence{" +
                 "id=" + id +
                 ", source=" + source.getName() +
                 ", destination=" + destination.getName() +
