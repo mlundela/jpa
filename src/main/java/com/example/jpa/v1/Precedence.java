@@ -8,8 +8,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Data
-public class PrecedenceV1 {
+public class Precedence {
     @Id private Long id;
-    @OneToOne private ParticipantV1 source;
-    @OneToOne private ParticipantV1 destination;
+    @OneToOne private Participant source;
+    @OneToOne private Participant destination;
 }

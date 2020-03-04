@@ -1,11 +1,10 @@
-package com.example.jpa.v2;
+package com.example.jpa.v3;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 @DataJpaTest
 class ParticipantRepositoryTest {
@@ -27,9 +26,8 @@ class ParticipantRepositoryTest {
     private Participant getParticipant(String name, long id, Participant precedence) {
         final Participant out = new Participant(id, name);
         if (precedence != null) {
-            out.setPrecedence(precedence);
+            out.setPrecedence(precedence, "sjef");
         }
         return out;
     }
-
 }

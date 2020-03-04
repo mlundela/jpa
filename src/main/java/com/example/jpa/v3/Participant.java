@@ -1,6 +1,7 @@
 package com.example.jpa.v3;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,25 +11,25 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-public class ParticipantV3 implements Serializable {
+public class Participant implements Serializable {
 
     @Id private Long id;
 
     @OneToOne(mappedBy = "source", cascade = CascadeType.ALL, orphanRemoval = true)
-    private PrecedenceV3 parent;
+    private Precedence parent;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<PrecedenceV3> children = new HashSet<>();
+    private Set<Precedence> children = new HashSet<>();
 
     private String name;
 
-    public ParticipantV3(Long id, String name) {
+    public Participant(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public void setPrecedence(ParticipantV3 precedence, String name) {
-        final PrecedenceV3 link = new PrecedenceV3(this, precedence, name);
+    public void setPrecedence(Participant precedence, String name) {
+        final Precedence link = new Precedence(this, precedence, name);
         this.parent = link;
         precedence.getChildren().add(link);
     }

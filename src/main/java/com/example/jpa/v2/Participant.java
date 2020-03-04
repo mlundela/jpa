@@ -17,19 +17,19 @@ import java.util.Set;
 @Setter
 @ToString(exclude = {"parent"})
 @NoArgsConstructor
-public class ParticipantV2 {
+public class Participant {
 
     @Id private Long id;
     private String name;
-    @OneToOne private ParticipantV2 parent;
-    @OneToMany private Set<ParticipantV2> children = new HashSet<>();
+    @OneToOne private Participant parent;
+    @OneToMany private Set<Participant> children = new HashSet<>();
 
-    public ParticipantV2(Long id, String name) {
+    public Participant(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public void setPrecedence(ParticipantV2 precedence) {
+    public void setPrecedence(Participant precedence) {
         this.parent = precedence;
         precedence.getChildren().add(this);
     }

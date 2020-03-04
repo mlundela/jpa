@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class ParticipantV1 {
+public class Participant {
     @Id private Long id;
     private String name;
 }
