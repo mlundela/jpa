@@ -1,9 +1,6 @@
 package com.example.jpa.v2;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +14,7 @@ import java.util.Set;
 @Setter
 @ToString(exclude = {"parent"})
 @NoArgsConstructor
+@EqualsAndHashCode(of = {"id"})
 public class Participant {
 
     @Id private Long id;
@@ -27,6 +25,14 @@ public class Participant {
     public Participant(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public void deletePrecedence() {
+        if (this.parent == null) {
+            throw new RuntimeException("Participant has no precedence");
+        }
+        parent.getChildren().remove(this);
+        parent = null;
     }
 
     public void setPrecedence(Participant precedence) {

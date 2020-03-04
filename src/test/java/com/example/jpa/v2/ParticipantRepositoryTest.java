@@ -13,7 +13,7 @@ class ParticipantRepositoryTest {
     @Autowired private ParticipantRepository repository;
 
     @Test
-    public void test() throws Exception {
+    public void test_create() throws Exception {
         final Participant p1 = repository.save(getParticipant("Henning", 1L, null));
         final Participant p2 = repository.save(getParticipant("Mads", 2L, p1));
         for (Participant participant : repository.findAll()) {
@@ -21,6 +21,21 @@ class ParticipantRepositoryTest {
         }
         final Participant p = repository.findById(1L).orElseThrow();
         assertThat(p.getChildren()).hasSize(1);
+    }
+
+    @Test
+    public void test_delete() throws Exception {
+        final Participant p1 = repository.save(getParticipant("Henning", 1L, null));
+        final Participant p2 = repository.save(getParticipant("Mads", 2L, p1));
+
+        p2.deletePrecedence();
+        repository.save(p2);
+
+        for (Participant participant : repository.findAll()) {
+            System.out.println(participant);
+        }
+        final Participant p = repository.findById(1L).orElseThrow();
+        assertThat(p.getChildren()).hasSize(0);
     }
 
 

@@ -28,6 +28,14 @@ public class Participant implements Serializable {
         this.name = name;
     }
 
+    public void deletePrecedence() {
+        if (this.parent == null) {
+            throw new RuntimeException("Participant has no precedence");
+        }
+        parent.getDestination().getChildren().remove(parent);
+        parent = null;
+    }
+
     public void setPrecedence(Participant precedence, String name) {
         final Precedence link = new Precedence(this, precedence, name);
         this.parent = link;
