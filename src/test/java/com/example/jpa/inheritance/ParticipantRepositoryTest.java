@@ -19,11 +19,15 @@ class ParticipantRepositoryTest {
         final Monkey monkey = new Monkey();
         monkey.setName("Julius");
         monkey.setHasBanana(true);
-        animals.save(monkey);
+        animals.saveAndFlush(monkey); // Will trigger insert
+        monkey.setHasBanana(false);
+        animals.saveAndFlush(monkey); // Will trigger update
 
         final Donkey donkey = new Donkey();
         donkey.setName("Honky Donkey Blues");
         donkey.setAngry(true);
+        animals.save(donkey);
+        animals.save(donkey);
         animals.save(donkey);
 
         assertThat(monkey.getId()).isNotNull();
