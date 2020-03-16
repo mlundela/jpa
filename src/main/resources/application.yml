@@ -1,1 +1,8 @@
+#spring.datasource:
+#  url: jdbc:postgresql://localhost:5432/rsadmin
+#  username: postgres
+#  password:
+#  jpa.hibernate.ddl-auto: create
 
+spring:
+  jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true

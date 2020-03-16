@@ -1,12 +1,15 @@
 package com.example.jpa.inheritance;
 
+import io.zonky.test.db.AutoConfigureEmbeddedDatabase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 @DataJpaTest
+//@AutoConfigureEmbeddedDatabase
 class ParticipantRepositoryTest {
 
     @Autowired private AnimalRepository animals;
