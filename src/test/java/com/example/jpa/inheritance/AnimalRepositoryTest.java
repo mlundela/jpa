@@ -5,16 +5,41 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 @DataJpaTest
-//@AutoConfigureEmbeddedDatabase
-class ParticipantRepositoryTest {
+@AutoConfigureEmbeddedDatabase
+class AnimalRepositoryTest {
 
     @Autowired private AnimalRepository animals;
     @Autowired private MonkeyRepository monkeys;
     @Autowired private DonkeyRepository donkeys;
+
+    @Test
+    void test_overwrite() throws Exception {
+
+        final Monkey monkey = new Monkey();
+        monkey.setName("Julius");
+        animals.save(monkey);
+
+        final Donkey donkey = new Donkey();
+        donkey.setName("Honky Donkey Blues");
+        donkey.setId(monkey.getId());
+        animals.save(donkey);
+
+        System.out.println(monkey);
+        System.out.println(donkey);
+
+        final Optional<Animal> found = animals.findById(donkey.getId());
+
+        assertThat(found).isPresent();
+        assertThat(found.get()).isEqualTo(donkey); // FAIL!
+    }
+
 
     @Test
     public void test() throws Exception {

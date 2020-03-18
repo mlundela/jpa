@@ -32,7 +32,7 @@ class StandingServiceTest {
 
     private RSCommandWrapper<LoadStanding> createLoadStandingCommand(String object) {
         LoadStanding c = new LoadStanding(
-                DataSystem.ENETPULSE, "standing-1",
+                DataSystem.ENETPULSE, "standing-" + object + "-123",
                 object, "object-123",
                 new StandingType("place", "The place of the participant"),
                 List.of(new LoadStandingParticipant(
